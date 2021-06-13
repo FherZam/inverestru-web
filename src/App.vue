@@ -1,30 +1,35 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div id="nav" class="back">
+    <Header />
+
+    <router-view />
+
+    <div class="footer">
+      <footer class="my-3 text-center text-white  bg-success bg-gradient">
+        <h4>&copy; {{ getYear }} - Inverestru</h4>
+        <p>
+          Av. de Los Insurgentes 2604 Col. Los Alamos CP. 36555 Irapuato,
+          Gto.<br />
+          Teléfono (462) 6 23 73 51
+        </p>
+      </footer>
+    </div>
   </div>
-  <router-view/>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import Header from "./components/Header.vue";
+//import Footer from "./components/Footer.vue";
 
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+export default {
+  components: {
+    Header,
+  //  Footer,
+  },
+  computed: {
+    getYear() {
+      return new Date().getFullYear();
+    },
+  },
+};
+</script>
